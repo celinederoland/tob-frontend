@@ -1,0 +1,9 @@
+.left-button {
+
+    padding: 10px;
+    vertical-align: center;
+    font-size: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

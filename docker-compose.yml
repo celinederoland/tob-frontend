@@ -1,0 +1,35 @@
+version: '2'
+
+services:
+
+  npm:
+    build: env/npm
+    volumes:
+      - ./:/app
+    networks:
+      - front
+
+  server:
+    build: env/apache-php7.2
+    volumes:
+      - ./build:/var/www/html/public
+    labels:
+      - "traefik.frontend.rule=Host:tobacco.${PROJECT_DOMAIN}"
+      - "traefik.docker.network=traefik_default"
+      - "traefik.backer=tobacco-apache-front-server"
+      - "traefik.enable=true"
+    networks:
+      - traefik
+      - back
+      - front
+    ports:
+      - 8006:80
+
+networks:
+  traefik:
+    external:
+      name: traefik_default
+  back:
+    driver: bridge
+  front:
+    driver: bridge
