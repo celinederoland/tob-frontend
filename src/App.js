@@ -18,16 +18,15 @@ class App extends React.Component {
 
     onAddTime(time) {
 
-        if(!time.active) axios.post('http://tobacco-api.itpassion.info/time/' + time.time)
+        if (!time.active) axios.post('http://tobacco-api.' + process.env.REACT_APP_PROJECT_DOMAIN + '/time/' + time.time)
             .then(function (response) {
                 this.setState((prevState) => {
                     let weeks = prevState.weeks;
                     Object.keys(weeks).map((key) => {
-                        if(key === response.data.should_update) {
+                        if (key === response.data.should_update) {
                             weeks[key] = response.data.data;
                         }
                     });
-                    console.log(weeks);
                     return {
                         weeks: weeks
                     }
@@ -37,35 +36,31 @@ class App extends React.Component {
                 console.log(error);
             });
         else {
-            axios.post('http://tobacco-api.itpassion.info/time/delete/' + time.time).then(function (response) {
+            axios.post('http://tobacco-api.' + process.env.REACT_APP_PROJECT_DOMAIN + '/time/delete/' + time.time).then(function (response) {
                 this.setState((prevState) => {
                     let weeks = prevState.weeks;
                     Object.keys(weeks).map((key) => {
-                        if(key === response.data.should_update) {
+                        if (key === response.data.should_update) {
                             weeks[key] = response.data.data;
                         }
                     });
-                    console.log(weeks);
                     return {
                         weeks: weeks
                     }
                 });
             }.bind(this))
                 .catch(function (error) {
-                    console.log(error);
                 });
         }
     }
 
     componentDidMount() {
 
-        axios.get('http://tobacco-api.itpassion.info/all')
+        axios.get('http://tobacco-api.' + process.env.REACT_APP_PROJECT_DOMAIN + '/all')
             .then(function (response) {
-                console.log(response);
                 this.setState({weeks: response.data});
             }.bind(this))
             .catch(function (error) {
-                console.log(error);
             });
 
     }

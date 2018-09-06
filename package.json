@@ -12,7 +12,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "REACT_APP_PROJECT_DOMAIN=localhost react-scripts build",
+    "prod": "REACT_APP_PROJECT_DOMAIN=itpassion.info react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }
