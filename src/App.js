@@ -8,6 +8,7 @@ import Axis from "./Plot/Axis/Axis";
 import Vector from "./Plot/lib/Vector";
 import StraightPlot from "./Plot/StraightPlot/StraightPlot";
 import Plot from "./Plot/Plot/Plot";
+import StatsPanel from "./UI/StatsPanel/StatsPanel";
 
 class App extends React.Component {
 
@@ -71,29 +72,6 @@ class App extends React.Component {
 
     render() {
 
-        const values = [
-            {x: 0, y: 2, z: 3, t: 12},
-            {x: 1, y: 5, z: 30, t: 14},
-            {x: 3, y: 8, z: 0, t: 5},
-            {x: 4, y: 3, z: 12, t: 13},
-            {x: 12, y: 10, z: 4, t: 16},
-            {x: 13, y: 7, z: 28, t: 11},
-            {x: 14, y: 6, z: 1, t: 16},
-        ];
-
-        const getX = value => value.x;
-        const getY = [value => value.y, value => value.z, value => value.t];
-        const width = 240;
-        const height = 150;
-        const xStep = 1;
-        const xMajorStep = 5;
-        const yStep = 1;
-        const yMajorStep = 5;
-        const margin = 30;
-
-        const plotter = new Plotter(values, getX, getY, width, height, xStep, xMajorStep, yStep, yMajorStep, margin);
-        const plot = <Plot plotter={plotter}/>;
-
 
         return (
             <React.Fragment>
@@ -102,9 +80,7 @@ class App extends React.Component {
                     <MainPanel weeks={this.state.weeks} onAddTime={this.onAddTime}/>
                 </section>
                 <section>
-                    <svg width={width + 2 * margin} height={height + 2 * margin}>
-                        {plot}
-                    </svg>
+                    <StatsPanel weeks={this.state.weeks}/>
                 </section>
             </React.Fragment>
         );

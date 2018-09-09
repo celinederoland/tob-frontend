@@ -16,9 +16,9 @@ class Vector {
         return new Vector(this.x + v.x, this.y + v.y);
     }
 
-    absoluteCoordinates(system) {
+    absoluteCoordinates(system, xRange, yRange) {
 
-        return system.o.add(system.u.clone().scale(this.x)).add(system.v.clone().scale(this.y));
+        return system.o.add(system.u.clone().scale((this.x - xRange.start))).add(system.v.clone().scale(this.y - yRange.start));
     }
 
     scale(lambda) {

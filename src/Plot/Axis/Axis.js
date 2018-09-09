@@ -12,6 +12,7 @@ class Axis extends React.Component {
         const orthoDirection = direction.ortho().normalize(this.props.tickSize);
         const orthoDirection2 = orthoDirection.clone().scale(this.props.gradPosition * 4);
         const fontSize = this.props.tickSize * 2.5;
+        const label = this.props.label;
 
         const xAxis = (
             <line x1={origin.x}
@@ -38,7 +39,7 @@ class Axis extends React.Component {
                     y={origin.y + (value - range.start) * direction.y - orthoDirection2.y - subDirection.y}
                     fontSize={fontSize + 'px'}
                 >
-                    {value}
+                    {label(value)}
                 </text> : null
         ));
 

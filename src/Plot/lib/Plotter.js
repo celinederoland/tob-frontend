@@ -24,8 +24,8 @@ class Plotter {
         this.yRange = new Range(yValues, yStep, yMajorStep);
 
         const origin = new Vector(margin, margin + height);
-        xDirection.scale(width / this.xRange.end - this.xRange.start);
-        yDirection.scale(-height / this.yRange.end - this.yRange.start);
+        xDirection.scale(width / (this.xRange.end - this.xRange.start));
+        yDirection.scale(-height / (this.yRange.end - this.yRange.start));
 
         this.system = new CoordinateSystem(origin, xDirection, yDirection);
 
