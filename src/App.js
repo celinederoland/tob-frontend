@@ -3,6 +3,7 @@ import './App.css'
 import axios from 'axios'
 import Header from "./UI/Header/Header";
 import MainPanel from "./UI/MainPanel/MainPanel";
+import DExample from "./UI/DExample/DExample";
 
 class App extends React.Component {
 
@@ -66,11 +67,17 @@ class App extends React.Component {
     }
 
     render() {
+
         return (
             <React.Fragment>
                 <Header/>
                 <section>
                     <MainPanel weeks={this.state.weeks} onAddTime={this.onAddTime}/>
+                </section>
+                <section>
+                    <DExample height={40}
+                              width={200}
+                    />
                 </section>
             </React.Fragment>
         );
