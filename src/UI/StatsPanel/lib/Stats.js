@@ -7,6 +7,8 @@ class Stats {
         const week_keys = Object.keys(weeks);
         const start_at = Number.parseInt(week_keys[0].substr(2), 10);
         this.day_values = [];
+        this.day_details = [];
+        this.max_by_day = 0;
         week_keys.map(week_index => {
                 const day_keys = Object.keys(weeks[week_index].data);
 
@@ -20,7 +22,7 @@ class Stats {
                         max_gap: weeks[week_index].data[day_index].stats.max_gap,
                         average_gap: weeks[week_index].data[day_index].stats.average_gap
                     };
-                    if(timestamp === Number.parseInt(week_index.substr(2), 10)) {
+                    if (timestamp === Number.parseInt(week_index.substr(2), 10)) {
                         Object.assign(object, {
                             w_count: weeks[week_index].stats.count,
                             w_duration: weeks[week_index].stats.duration,
@@ -31,9 +33,24 @@ class Stats {
                     }
                     return object;
                 }));
+
+                this.day_details.push(...day_keys.map(day_index => {
+                    const timestamp = Number.parseInt(day_index.substr(2), 10);
+                    const list = weeks[week_index].data[day_index].data;
+                    if (list.length > this.max_by_day) this.max_by_day = list.length;
+                    const object = {
+                        x: timestamp - start_at
+                    };
+                    list.map((value, i) => {
+                        object[i + 1] = value % (3600 * 24);
+                    });
+                    return object;
+                }));
                 return null;
             }
         );
+
+        console.log(this.day_details);
         this.labelX = value => moment.unix(value + start_at).format('DD/MM');
         this.labelY = value => moment.unix(value).format('HH:mm');
     }

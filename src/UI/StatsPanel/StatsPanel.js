@@ -4,6 +4,7 @@ import Stats from "./lib/Stats";
 import CountGraph from "./CountGraph/CountGraph";
 import DurationGraph from "./DurationGraph/DurationGraph";
 import GapGraph from "./GapGraph/GapGraph";
+import DetailGraph from "./DetailGraph/DetailGraph";
 
 class StatsPanel extends React.Component {
     render() {
@@ -16,9 +17,14 @@ class StatsPanel extends React.Component {
 
         return stats ? (
             <div className="stats-panel">
-                <CountGraph width={width} height={height} margin={margin} stats={stats}/>
-                <DurationGraph width={width} height={height} margin={margin} stats={stats}/>
-                <GapGraph width={width} height={height} margin={margin} stats={stats}/>
+                <div className='stats-left'>
+                    <DetailGraph width={4 * width} height={3 * height} margin={margin} stats={stats}/>
+                </div>
+                <div className='stats-right'>
+                    <CountGraph width={width} height={height} margin={margin} stats={stats}/>
+                    <DurationGraph width={width} height={height} margin={margin} stats={stats}/>
+                    <GapGraph width={width} height={height} margin={margin} stats={stats}/>
+                </div>
             </div>
         ) : null;
     }
