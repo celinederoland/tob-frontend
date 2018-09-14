@@ -19,7 +19,7 @@ class GradEditor extends React.Component {
     render() {
         const size = 14;
         const day_start_at = this.props.okey.substr(2);
-        const day_data = this.props.day.data.map((time) => (Number.parseInt(time)));
+        const day_data = this.props.day.data.map((time) => (Number.parseInt(time, 10)));
 
         //Je split la journée en 24h
         const hours = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23];
@@ -34,7 +34,7 @@ class GradEditor extends React.Component {
                 let start_index = 0;
                 return (hour_splits.map(
                         (split) => {
-                            const time = Number.parseInt(day_start_at) + value * 3600 + split * 300;
+                            const time = Number.parseInt(day_start_at, 10) + value * 3600 + split * 300;
                             const found_at = day_data.indexOf(time, start_index);
                             const active = found_at > -1;
                             start_index = active ? found_at : start_index;

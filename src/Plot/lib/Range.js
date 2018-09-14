@@ -3,6 +3,7 @@ class Range {
     constructor(values, step, majorStep) {
 
         this.start = Math.min(...values);
+        this.start = this.start - this.start % step;
         this.end = Math.max(...values);
         this.step = step;
         this.majorStep = majorStep;

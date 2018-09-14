@@ -3,11 +3,6 @@ import './App.css'
 import axios from 'axios'
 import Header from "./UI/Header/Header";
 import MainPanel from "./UI/MainPanel/MainPanel";
-import Plotter from "./Plot/lib/Plotter";
-import Axis from "./Plot/Axis/Axis";
-import Vector from "./Plot/lib/Vector";
-import StraightPlot from "./Plot/StraightPlot/StraightPlot";
-import Plot from "./Plot/Plot/Plot";
 import StatsPanel from "./UI/StatsPanel/StatsPanel";
 
 class App extends React.Component {
@@ -32,6 +27,7 @@ class App extends React.Component {
                         if (key === response.data.should_update) {
                             weeks[key] = response.data.data;
                         }
+                        return null;
                     });
                     return {
                         weeks: weeks
@@ -48,6 +44,7 @@ class App extends React.Component {
                         if (key === response.data.should_update) {
                             weeks[key] = response.data.data;
                         }
+                        return null;
                     });
                     return {
                         weeks: weeks

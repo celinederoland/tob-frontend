@@ -26,7 +26,7 @@ class Grad5Min extends React.Component {
                       x2={this.props.translateX + this.props.value * this.props.size + this.props.size / 2}
                       y2={2 * this.props.size + this.props.size}
                       strokeWidth={this.props.value % 3 === 0 ? 3 : 1}
-                      stroke={Number.parseInt(this.props.value) === 0 ? 'orangered' : 'gray'}
+                      stroke={Number.parseInt(this.props.value, 10) === 0 ? 'orangered' : 'gray'}
                 />
             </g>
         );
