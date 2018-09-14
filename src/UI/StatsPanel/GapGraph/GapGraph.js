@@ -6,8 +6,11 @@ import Plot from "../../../Plot/Plot/Plot";
 class GapGraph extends React.Component {
     render() {
         const values = this.props.stats.day_values;
+        const nDay = this.props.stats.day_details.length;
+        const nWeek = Math.ceil( nDay / 7);
+        const stepping = Math.floor(nWeek / 5);
         const xStep = 3600 * 24;
-        const xMajorStep = 3600 * 24 * 7;
+        const xMajorStep = 3600 * 24 * 7 * stepping;
 
         const width = this.props.width;
         const height = this.props.height;
@@ -25,8 +28,8 @@ class GapGraph extends React.Component {
             /*value => value.max_gap,
             value => value.w_max_gap*/
         ];
-        const yStep = 3600;
-        const yMajorStep = 3600;
+        const yStep = 300;
+        const yMajorStep = 600;
 
         const filterY = value => value < 86400;
         const plotter = new Plotter(values, getX, getY, width, height, xStep, xMajorStep, yStep, yMajorStep, margin, null, null, null, filterY);

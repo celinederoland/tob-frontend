@@ -24,7 +24,7 @@ class Plot extends React.Component {
                 <Axis range={plotter.xRange} origin={plotter.system.o} direction={plotter.system.u} tickSize={4}
                       gradPosition={1} label={labelX}/>
                 <Axis range={plotter.yRange} origin={plotter.system.o} direction={plotter.system.v} tickSize={4}
-                      gradPosition={-1} label={labelY}/>
+                      gradPosition={-1.6} label={labelY}/>
                 {plots}
             </g>
         );

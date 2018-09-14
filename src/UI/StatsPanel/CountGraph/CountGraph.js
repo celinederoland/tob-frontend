@@ -9,8 +9,11 @@ class CountGraph extends React.Component {
     render() {
 
         const values = this.props.stats.day_values;
+        const nDay = this.props.stats.day_details.length;
+        const nWeek = Math.ceil( nDay / 7);
+        const stepping = Math.floor(nWeek / 5);
         const xStep = 3600 * 24;
-        const xMajorStep = 3600 * 24 * 7;
+        const xMajorStep = 3600 * 24 * 7 * stepping;
 
         const width = this.props.width;
         const height = this.props.height;

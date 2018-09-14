@@ -50,7 +50,6 @@ class Stats {
             }
         );
 
-        console.log(this.day_details);
         this.labelX = value => moment.unix(value + start_at).format('DD/MM');
         this.labelY = value => moment.unix(value).format('HH:mm');
     }

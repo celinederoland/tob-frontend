@@ -9,7 +9,7 @@ import DetailGraph from "./DetailGraph/DetailGraph";
 class StatsPanel extends React.Component {
     render() {
 
-        const width = 240;
+        const width = 340;
         const height = 150;
         const margin = 30;
         const weeks = this.props.weeks;
@@ -18,12 +18,18 @@ class StatsPanel extends React.Component {
         return stats ? (
             <div className="stats-panel">
                 <div className='stats-left'>
-                    <DetailGraph width={4 * width} height={3 * height} margin={margin} stats={stats}/>
+                    <div>
+                        <div className='graph-title'>Détails</div>
+                        <DetailGraph width={2.5 * width} height={4 * height} margin={margin} stats={stats}/>
+                    </div>
                 </div>
                 <div className='stats-right'>
+                    <div className='graph-title'>Nombre / Jour</div>
                     <CountGraph width={width} height={height} margin={margin} stats={stats}/>
-                    <DurationGraph width={width} height={height} margin={margin} stats={stats}/>
+                    <div className='graph-title'>Amplitude moyenne</div>
                     <GapGraph width={width} height={height} margin={margin} stats={stats}/>
+                    <div className='graph-title'>Amplitude totale</div>
+                    <DurationGraph width={width} height={height} margin={margin} stats={stats}/>
                 </div>
             </div>
         ) : null;

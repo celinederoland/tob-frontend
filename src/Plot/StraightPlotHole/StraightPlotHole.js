@@ -7,7 +7,6 @@ class StraightPlotHole extends React.Component {
     render() {
 
         const system = this.props.system;
-        console.log('points', this.props.points);
         const points = this.props.points
             .map(p => (p.isValid() ? p.absoluteCoordinates(system, this.props.xRange, this.props.yRange) : p));
 
@@ -19,7 +18,7 @@ class StraightPlotHole extends React.Component {
         if (points.length > 0) {
             let prevPoint = new Vector(0, null);
             pathPoints = "";
-            for (let i = 1; i < points.length; i++) {
+            for (let i = 0; i < points.length; i++) {
                 if (points[i].isValid() && prevPoint.isValid()) {
                     pathPoints += "L " + points[i].x + " " + points[i].y + " ";
                 }
