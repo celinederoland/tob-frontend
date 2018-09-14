@@ -18,7 +18,7 @@ class Plotter {
 
         const getAllY = value => getY.map(selector => selector(value));
         const xValues = values.map(getX);
-        const yValues = values.map(getAllY).reduce((acc, val) => acc.concat(val), []);
+        const yValues = values.map(getAllY).reduce((acc, val) => acc.concat(val), []).filter(value => (typeof value !== "undefined"));
 
         this.xRange = new Range(xValues, xStep, xMajorStep);
         this.yRange = new Range(yValues, yStep, yMajorStep);

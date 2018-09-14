@@ -16,6 +16,11 @@ class Vector {
         return new Vector(this.x + v.x, this.y + v.y);
     }
 
+    isValid() {
+
+        return (typeof this.x === 'number' && typeof this.y === 'number');
+    }
+
     absoluteCoordinates(system, xRange, yRange) {
 
         return system.o.add(system.u.clone().scale((this.x - xRange.start))).add(system.v.clone().scale(this.y - yRange.start));
