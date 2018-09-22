@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-docker-compose run npm npm $@
+docker-compose run --rm npm npm $@

@@ -4,6 +4,7 @@ import GradEditor from "../../Model/Day/GradEditor/GradEditor";
 import LeftButton from "./LeftButton/LeftButton";
 import RightButton from "./RightButton/RightButton";
 import TableWeek from "../../Model/Week/TableWeek/TableWeek";
+import TableAbstractWeek from "../../Model/Week/TableAbstractWeek/TableAbstractWeek";
 
 class MainPanel extends React.Component {
 
@@ -166,16 +167,23 @@ class MainPanel extends React.Component {
         const current_day = (day_keys && day_keys.length > 0) ? days[current_day_key] : null;
 
         const week_table = current_week ? <TableWeek week={current_week} onClickDay={this.setDay}/> : null;
-        const grad_editor = current_day ? (<GradEditor okey={current_day_key} day={current_day} onClickGrad={this.onClickGrad}/>) : null;
+        const week_abstract_table = current_week ?
+            <TableAbstractWeek week={current_week} onClickDay={this.setDay}/> : null;
+        const grad_editor = current_day ? (
+            <GradEditor okey={current_day_key} day={current_day} onClickGrad={this.onClickGrad}/>) : null;
 
         return (
             <React.Fragment>
                 {grad_editor}
-                <div className="main-panel">
+                <section className="main-panel">
                     <LeftButton onClick={this.prevWeek}/>
                     {week_table}
                     <RightButton onClick={this.nextWeek}/>
-                </div>
+
+                    <LeftButton onClick={this.prevWeek}/>
+                    {week_abstract_table}
+                    <RightButton onClick={this.nextWeek}/>
+                </section>
             </React.Fragment>
         );
     }

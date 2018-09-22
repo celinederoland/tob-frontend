@@ -62,7 +62,6 @@ class GradEditor extends React.Component {
                     {grad_hours}
                     {axe}
                 </svg>
-
             </div>
         );
     }

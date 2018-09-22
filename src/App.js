@@ -73,12 +73,12 @@ class App extends React.Component {
         return (
             <React.Fragment>
                 <Header/>
-                <section>
+                <div className='.content'>
                     <MainPanel weeks={this.state.weeks} onAddTime={this.onAddTime}/>
-                </section>
-                <section>
-                    <StatsPanel weeks={this.state.weeks}/>
-                </section>
+                    <section className={'.stats-section'}>
+                        <StatsPanel weeks={this.state.weeks}/>
+                    </section>
+                </div>
             </React.Fragment>
         );
     }

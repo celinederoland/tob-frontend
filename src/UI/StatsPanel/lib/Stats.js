@@ -43,6 +43,7 @@ class Stats {
                     };
                     list.map((value, i) => {
                         object[i + 1] = value % (3600 * 24);
+                        return null;
                     });
                     return object;
                 }));
@@ -51,7 +52,10 @@ class Stats {
         );
 
         this.labelX = value => moment.unix(value + start_at).format('DD/MM');
-        this.labelY = value => moment.unix(value).format('HH:mm');
+        this.labelY = value => {
+            const duration = moment.duration(value * 1000);
+            return duration.hours().toString().padStart(2, '0') + ':' + duration.minutes().toString().padStart(2, '0');
+        }
     }
 }
 
